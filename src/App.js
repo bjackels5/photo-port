@@ -29,12 +29,16 @@ function App() {
     return (
         <div>
             <Nav
-                vategories={categories}
+                categories={categories}
                 setCurrentCategory={setCurrentCategory}
                 currentCategory={currentCategory}
             ></Nav>
             <main>
-                <Gallery></Gallery>
+                <Gallery
+                    categories={categories}
+                    setCurrentCategory={setCurrentCategory}
+                    currentCategory={currentCategory}
+                ></Gallery>
                 <About></About>
             </main>
         </div>

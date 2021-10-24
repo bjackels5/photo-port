@@ -1,3 +1,7 @@
+/*
+Nav Component
+*/
+
 // import React, { useState } from 'react';
 import React, { useEffect } from 'react';
 import { capitalizeFirstLetter } from "../../utils/helpers";
