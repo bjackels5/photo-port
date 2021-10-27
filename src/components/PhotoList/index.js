@@ -3,7 +3,7 @@ PhotoList Subcomponent
 */
 
 import React, { useState } from 'react';
-// import Modal from '../Modal';
+import Modal from '../Modal';
 
 function PhotoList(props) {
     const { category } = props;
@@ -107,22 +107,31 @@ function PhotoList(props) {
     ]);
 
     const currentPhotos = photos.filter((photo) => photo.category === category);
+    const [ currentPhoto, setCurrentPhoto] = useState();
+    const [ isModalOpen, setIsModalOpen ] = useState(false);
+
+    const toggleModal = (image, i) => {
+        setCurrentPhoto({...image, index: i});
+        setIsModalOpen(!isModalOpen);
+    }
 
     return (
-        // <div>
-        //     <img src={testImage} alt="test1.0" />
-        // </div>
+        <div>
+            { isModalOpen && <Modal currentPhoto={currentPhoto} onClose={toggleModal} />}
 
-        <div className="flex-row">
-            {currentPhotos.map((image, i) => (
-                <img
-                    src={require(`../../assets/small/${category}/${i}.jpg`).default}
-                    alt={image.name}
-                    className="img-thumbnail mx-1"
-                    key={image.name}
-                />
-            ))}
+            <div className="flex-row">
+                {currentPhotos.map((image, i) => (
+                    <img
+                        src={require(`../../assets/small/${category}/${i}.jpg`).default}
+                        alt={image.name}
+                        className="img-thumbnail mx-1"
+                        onClick={() => toggleModal(image, i)}
+                        key={image.name}
+                    />
+                ))}
+            </div>
         </div>
+
     )
 }
 
