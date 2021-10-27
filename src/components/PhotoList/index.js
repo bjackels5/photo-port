@@ -5,9 +5,6 @@ PhotoList Subcomponent
 import React, { useState } from 'react';
 // import Modal from '../Modal';
 
-import testImage from "./../../assets/small/commercial/0.jpg";
-
-
 function PhotoList(props) {
     const { category } = props;
 
